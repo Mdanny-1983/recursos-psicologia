@@ -3,119 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prof. de Psicología | Recursos ESJA</title>
+    <title>Prof. Daniel Wallingre | Psicología ESJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <nav>
+        <nav class="container">
             <div class="logo">
-    <span class="psi-icon">Ψ</span> 
-    <strong>PSICOLOGÍA ESJA</strong> 
-    <span class="sep">|</span> 
-    Prof. Daniel Wallingre
-            <ul> 
+                <span class="psi-symbol">Ψ</span> 
+                <div class="logo-text">
+                    <strong>PSICOLOGÍA ESJA</strong>
+                    <span>Prof. Daniel Wallingre</span>
+                </div>
+            </div>
+            <ul class="nav-links"> 
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre mí</a></li>
                 <li><a href="#recursos">Recursos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#faq">Dudas</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="inicio" class="hero">
         <div class="container">
-            <h1>Bienvenidos</h1>
-            <p class="intro-text">
-                ¡Bienvenidos y bienvenidas a este espacio de encuentro! Soy Daniel Wallingre y los acompañaré en este recorrido por el mundo de la Psicología. Esta página no es solo un depósito de archivos, sino una herramienta pensada para que puedan profundizar los temas que charlamos en el aula, consultar materiales a su ritmo y seguir construyendo conocimiento juntos. El desafío es animarse a preguntar, a reflexionar y a descubrir nuevas formas de entendernos a nosotros mismos.
-            </p>
-        </div>
-    </section>
-
-    <section class="filosofia">
-        <div class="container">
-            <blockquote>
-                "El desafío es ordenar el conocimiento, cuestionarlo y usarlo."
-            </blockquote>
-            <p>Muchos creen que no saben nada de psicología al empezar, pero todos tenemos conocimientos previos de redes sociales, lecturas o experiencias. <strong>Todo eso también es conocimiento.</strong></p>
-            <p>Te invito a indagar, participar y hacer propio este mundo tan complejo desde la primera clase.</p>
-        </div>
-    </section>
-
-   <section id="sobre-mi" class="sobre-mi">
-    <div class="container">
-        <div class="bio-content">
-            <img src="mi foto.jpg" alt="Profesor de Psicología" class="bio-img">
-            
-            <div class="bio-text">
-                <h2>Sobre mí ‍💼</h2>
-                <p>"Soy Daniel Wallingre, Profesor de Psicología con experiencia en el ámbito de la educación secundaria para jóvenes y adultos. Entiendo la práctica docente como un espacio de intercambio constante, donde el conocimiento se construye a partir del diálogo y el respeto por las trayectorias individuales de cada estudiante.
-
-En mis clases en la ESJA Nº13 y la ESJA Nº59, busco que la psicología sea una herramienta útil para analizar nuestra realidad y mejorar la comprensión de los vínculos que establecemos. Esta página surge como un recurso adicional para facilitar el acceso a los materiales de estudio y acompañar el proceso de aprendizaje más allá del horario escolar."</p>
+            <div class="hero-content">
+                <span class="hero-badge">Ciclo Lectivo 2026</span>
+                <h1>Psicología <span class="text-accent">ESJA</span></h1>
+                <p class="hero-subtitle">Espacio de encuentro, reflexión y recursos pedagógicos para las ESJA Nº13 y Nº59.</p>
+                <div class="hero-btns">
+                    <a href="#recursos" class="btn-primary">Ver Materiales</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section id="sobre-mi" class="sobre-mi">
+        <div class="container bio-flex">
+            <div class="bio-img-wrapper">
+                <img src="mi foto.jpg" alt="Prof. Daniel Wallingre">
+            </div>
+            <div class="bio-text">
+                <h2>Sobre la propuesta ‍💼</h2>
+                <p>Soy Daniel Wallingre, Profesor de Psicología. Entiendo la práctica docente como un espacio de intercambio constante y respeto por las trayectorias individuales. Este sitio busca facilitar el acceso a materiales de estudio y acompañar el aprendizaje más allá del aula.</p>
+            </div>
+        </div>
+    </section>
 
     <section id="recursos" class="recursos">
         <div class="container">
-            <h2>Recursos y Materiales</h2>
+            <h2 class="section-title">Material de Estudio</h2>
             <div class="grid-recursos">
                 <div class="card">
-                    <h3>📚 Programa ESJA N°13.pdf</h3>
-					<p>Contenidos, objetivos y evaluación.</p>
-					<a href="programa-esja13.pdf"
-					class=btn-small">Descargar PDF </a>
-					</div>
-					<div class="card">
-					  <h3>📚 Programa ESJA N°59 "Pablo pizzurno"</h3>
-					<p>Contenidos, objetivos y evaluación.</p>
-					<a href="programa-esja59.pdf"
-					class=btn-small">Descargar PDF </a>
-					</div>
-					
-                <div class="card">
-                    <h3>📄 Lecturas PDF</h3>
-                    <p>Textos obligatorios y complementarios.</p>
-					<a href="material-psicología2026.pdf"
-					class=btn-small">Descargar PDF </a>
-					
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Programa ESJA 13</h3>
+                    <a href="programa-esja13.pdf" class="btn-outline">Descargar</a>
                 </div>
                 <div class="card">
-                    <h3>🎥 Videos</h3>
-                    <p>Contenido multimedia para profundizar los conceptos trabajados en clase.</p>
-                </div>
-				      <div class="card">
-                    <h3>📷 Fotos de estudiantes</h3>
-                    <p>Estudiantes que dejan huellas</p>
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Programa ESJA 59</h3>
+                    <a href="programa-esja59.pdf" class="btn-outline">Descargar</a>
                 </div>
                 <div class="card">
-                    <h3>💡 Proyectos</h3>
-                    <p>Proyectos de estudiantes</p>
+                    <i class="fas fa-book-open"></i>
+                    <h3>Lecturas 2026</h3>
+                    <a href="material-psicología2026.pdf" class="btn-outline">Descargar</a>
                 </div>
             </div>
         </div>
     </section>
 
-  <footer id="contacto">
-    <div class="container">
-        <h2>Consultas y Contacto 👨‍</h2>
-        <p>¿Tienes dudas sobre los temas de clase o los programas? Contáctame:</p>
-        
-        <div class="contact-links">
-            <a href="mailto:dwallingre@gmail.com" class="btn">
-                ✉️ Enviar un Correo
-            </a>
-
-            <a href="https://wa.me/5493445574590" class="btn" style="background-color: #25D366;">
-                📱 WhatsApp (Consultas rápidas)
-            </a>
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <div class="faq-container">
+                <details>
+                    <summary>¿Cómo entrego los trabajos? <i class="fas fa-chevron-down"></i></summary>
+                    <div class="faq-content"><p>Puedes entregarlos en el aula o vía mail en formato PDF.</p></div>
+                </details>
+                <details>
+                    <summary>¿Dónde veo las fechas de examen? <i class="fas fa-chevron-down"></i></summary>
+                    <div class="faq-content"><p>Están detalladas dentro del Programa de cada escuela.</p></div>
+                </details>
+            </div>
         </div>
-        
-        <p class="footer-copy">&copy; 2026 - Prof. de Psicología | ESJA Nº13 y Nº59</p>
-    </div>
-</footer>
+    </section>
+
+    <a href="https://wa.me/5493445574590" class="wsp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 | Prof. Daniel Wallingre | ESJA Nº13 y Nº59</p>
+        </div>
+    </footer>
 
 </body>
 </html>
