@@ -467,3 +467,42 @@ img {
     padding: 5px 15px;
     font-size: 0.8rem;
 }
+/* Ajustes para dispositivos móviles (Celulares) */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 0;
+    }
+
+    nav {
+        flex-direction: column; /* Apila el logo sobre el menú */
+        gap: 10px;
+    }
+
+    .logo {
+        flex-direction: row; /* Mantiene el símbolo al lado del texto */
+        justify-content: center;
+        text-align: center;
+    }
+
+    .psi-symbol {
+        font-size: 1.5rem; /* Símbolo un poco más pequeño en móvil */
+    }
+
+    .logo-text strong {
+        font-size: 0.9rem; /* Texto principal más chico */
+    }
+
+    .logo-text span {
+        font-size: 0.7rem; /* Nombre del prof más chico */
+    }
+
+    .nav-links {
+        gap: 10px;
+        flex-wrap: wrap; /* Si no caben, los botones del menú bajan a otra línea */
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+}
