@@ -1,201 +1,168 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prof. Daniel Wallingre | Psicología ESJA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <title>Prof. Daniel Wallingre - Psicología</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azul-oscuro: #154360;
+            --azul-medio: #21618c;
+            --celeste: #aed6f1;
+            --gris-fondo: #e9f0f5;
+            --blanco: #ffffff;
+            --texto-principal: #333333;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.8;
+            color: var(--texto-principal);
+            margin: 0;
+            background-color: var(--gris-fondo);
+        }
+
+        h1, h2 { font-family: 'Merriweather', serif; color: var(--azul-oscuro); }
+
+        .waves-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+            z-index: -1;
+        }
+
+        .site-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        .sidebar { flex: 0 0 280px; position: sticky; top: 40px; height: fit-content; }
+        .nav-menu { list-style: none; padding: 0; }
+        .btn-side {
+            display: flex; align-items: center; padding: 16px 24px; margin-bottom: 12px;
+            background: var(--blanco); color: var(--azul-medio); text-decoration: none;
+            border-radius: 12px; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .btn-side:hover { transform: translateX(10px); background: var(--azul-medio); color: white; }
+
+        .main-content { flex: 1; }
+        .card-section {
+            background: var(--blanco); padding: 40px; border-radius: 20px;
+            margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .perfil-foto img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--celeste); object-fit: cover; }
+
+        /* --- LÓGICA FAQ --- */
+        .faq-item { border-bottom: 1px solid #eee; }
+        .faq-question {
+            width: 100%; background: none; border: none; padding: 20px 0;
+            text-align: left; font-size: 1.1rem; color: var(--azul-oscuro);
+            font-weight: 600; cursor: pointer; display: flex; justify-content: space-between;
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease-in-out; color: #546e7a; }
+        .faq-answer p { padding-bottom: 20px; margin: 0; }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .faq-item.active .fa-chevron-down { transform: rotate(180deg); transition: 0.3s; }
+
+        /* --- SLIDER --- */
+        .slider-wrapper { overflow: hidden; border-radius: 20px; height: 400px; margin: 20px 0; }
+        .slides { display: flex; width: 400%; animation: slideShow 20s infinite; }
+        .slide { width: 25%; }
+        .slide img { width: 100%; height: 400px; object-fit: cover; }
+
+        @keyframes slideShow {
+            0%, 20% { transform: translateX(0); }
+            25%, 45% { transform: translateX(-25%); }
+            50%, 70% { transform: translateX(-50%); }
+            75%, 95% { transform: translateX(-75%); }
+            100% { transform: translateX(0); }
+        }
+
+        @media (max-width: 900px) { .site-container { flex-direction: column; } .sidebar { position: relative; width: 100%; } }
+    </style>
 </head>
 <body>
+    <div class="waves-bg"></div>
 
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <span class="psi-symbol">Ψ</span> 
-                <div class="logo-text">
-                    <strong>PSICOLOGÍA ESJA</strong>
-                    <span>Prof. Daniel Wallingre</span>
-                </div>
-            </div>
-            <ul class="nav-links"> 
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#recursos">Recursos</a></li>
-                <li><a href="#trayectorias">Trayectorias</a></li>
-                <li><a href="#comunidad">Comunidad</a></li>
-                <li><a href="#faq">Dudas</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="site-container">
+        <aside class="sidebar">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="esja13/esja13.html" class="btn-side"><i class="fas fa-university"></i> ESJA 13</a></li>
+                    <li><a href="esja59/esja59.html" class="btn-side"><i class="fas fa-microscope"></i> ESJA 59</a></li>
+                    <li><a href="ov/orientacion.html" class="btn-side"><i class="fas fa-compass"></i> Orientación</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-    <section id="inicio" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-badge">Ciclo Lectivo 2026</span>
-                <h1>Psicología <span class="text-accent">ESJA</span></h1>
-                <p class="hero-subtitle">Espacio de encuentro, reflexión y recursos pedagógicos para las ESJA Nº13 y Nº59.</p>
-                <div class="hero-btns">
-                    <a href="#recursos" class="btn-primary">Ver Materiales</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        <main class="main-content">
+            <header style="text-align:center; margin-bottom: 40px;">
+                <h1>Psiconectados</h1>
+                <p>Recursos Pedagógicos • Prof. Daniel Wallingre</p>
+            </header>
 
-    <section id="sobre-mi" class="sobre-mi">
-        <div class="container bio-flex">
-            <div class="bio-img-wrapper">
-                <img src="mi foto.jpg" alt="Prof. Daniel Wallingre">
-            </div>
-            <div class="bio-text">
-                <h2>Sobre la propuesta 💼</h2>
-                <p>Soy Daniel Wallingre, Profesor de Psicología. Entiendo la práctica docente como un espacio de intercambio constante y respeto por las trayectorias individuales.</p>
-            </div>
-        </div>
-    </section>
+            <section id="sobre-mi" class="card-section">
+                <div style="display:flex; gap:30px; align-items:center; flex-wrap:wrap;">
+                    <div class="perfil-foto"><img src="mi foto.jpg" alt="Daniel"></div>
+                    <div style="flex:1;">
+                        <h2>Sobre mí</h2>
+                        <p>Profesor de Psicología con 16 años de trayectoria en educación, especialmente en secundaria de jóvenes y Adultos. También me desempeño como tutor, Orientador Vocacional desde la perspectiva educativa y Asesor Pedagógico. Mi enfoque parte de reconocer que cada estudiante adulto tiene una trayectoria de vida, experiencias y una búsqueda personal propia y su propio ritmo de aprendizaje. Por eso, el aprendizaje no se basa en contenidos teóricos, sino tambien en el diálogo, la reflexión y el intercambio de experiencias.La psicología se trabaja como una herramienta para comprendernos mejor a nosotros mismos, entender a los demas y pensar nuestas decisiones, respetando los ditintos recorridos que cada estudiante aporta al aula. </p>
+                    </div>
+                </div>
+            </section>
 
-    <section id="recursos" class="recursos">
-        <div class="container">
-            <h2 class="section-title">Material de Estudio</h2>
-            <div class="grid-recursos">
-                <div class="card">
-                    <i class="fas fa-file-pdf"></i>
-                    <h3>Programa ESJA 13</h3>
-                    <a href="programa-esja13.pdf" class="btn-outline" target="_blank" rel="noopener">Descargar Programa ESJA 13</a>
-                </div>
-                <div class="card">
-                    <i class="fas fa-file-pdf"></i>
-                    <h3>Programa ESJA 59</h3>
-                    <a href="programa-esja59.pdf" class="btn-outline" target="_blank" rel="noopener">Descargar Programa ESJA 59</a>
-                </div>
-                <div class="card">
-                    <i class="fas fa-book-open"></i>
-                    <h3>Lecturas 2026</h3>
-                    <a href="unidad1-historia.pdf" class="btn-outline" download="unidad1-historia.pdf">Descargar Unidad 1 - Historia</a> 
-                    <a href="unidad2-conducta.pdf" class="btn-outline" download="unidad2-conducta.pdf">Descargar Unidad 2 - Conducta</a> 
-                    <a href="unidad4.pdf" class="btn-outline" download="unidad4.pdf">Descargar Unidad 4</a> 
-                    <a href="unidad5.pdf" class="btn-outline" download="unidad5.pdf">Descargar Unidad 5</a>
-                    <a href="material psicología Completo 2026.pdf" class="btn-outline" download="material psicología Completo.pdf">Descargar Material Completo</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="trayectorias" class="recursos" style="background-color: #f4f7f6;">
-        <div class="container">
-            <h2 class="section-title">Trayectorias Discontinuas</h2>
-            <div class="grid-recursos">
+            <section id="faq" class="card-section">
+                <h2>Preguntas Frecuentes</h2>
                 
-                <div class="card">
-                    <i class="fas fa-video"></i>
-                    <h3>Contenido Variado</h3>
-                    <p>Videos y audios complementarios.</p>
-                    <div class="item-descarga">
-                        <h5>VIDEO Miedo a Volar</h5>
-                        <a href="miedo a volar.mp4" class="btn-outline" target="_blank" rel="noopener">Ver/Descargar</a>
-                    </div>
-                    <div class="item-descarga">
-                        <h5>Audio Barbería virtual</h5>
-                        <a href="ilusion-auditiva.mp3" class="btn-outline" target="_blank" rel="noopener">Escuchar</a>
+                <div class="faq-item">
+                    <button class="faq-question">¿Cómo se aprueba el espacio? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>La evaluación es formativa, contemplando conocimiento, responsabilidad y compromiso.</p>
                     </div>
                 </div>
 
-                <div class="card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Lecturas "Para Principiantes"</h3>
-                    <div class="item-descarga">
-                        <h5>PDF Psicología</h5>
-                        <a href="principiantes.pdf" class="btn-outline" target="_blank" rel="noopener">Descargar</a>
-                    </div>
-                    <div class="item-descarga">
-                        <h5>PDF Psicoanálisis</h5>
-                        <a href="psicoanalisis-para-principiantes.pdf" class="btn-outline" target="_blank" rel="noopener">Descargar</a>
-                    </div>
-                    <div class="item-descarga">
-                        <h5>PDF Gestalt</h5>
-                        <a href="gestalt-principiantes.pdf" class="btn-outline" target="_blank" rel="noopener">Descargar</a>
+                <div class="faq-item">
+                    <button class="faq-question">¿Cómo se entregan los trabajos? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Deben enviarse por correo a: <strong>dwallingre@gmail.com</strong></p>
                     </div>
                 </div>
+            </section>
 
-                <div class="card">
-                    <i class="fas fa-file-signature"></i>
-                    <h3>Trabajos Prácticos</h3>
-                    <div class="item-descarga">
-                        <h5>T.P. 1 - 1er Trimestre</h5>
-                        <a href="tp1.pdf" class="btn-outline" target="_blank" rel="noopener">Descargar</a>
-                    </div>
-                    <div class="item-descarga">
-                        <h5>T.P. 2 - 1er Trimestre</h5>
-                        <a href="tp2.pdf" class="btn-outline" target="_blank" rel="noopener">Descargar</a>
-                    </div>
-                    <div class="item-descarga">
-                        <h5>T.P. 3 - 1er Trimestre</h5>
-                        <a href="tp3.pdf" class="btn-outline" target="_blank" rel="noopener">Descargar</a>
+            <section id="comunidad" class="card-section">
+                <h2>Comunidad</h2>
+                <div class="slider-wrapper">
+                    <div class="slides">
+                        <div class="slide"><img src="foto1.jpg" alt="1"></div>
+                        <div class="slide"><img src="foto2.jpg" alt="2"></div>
+                        <div class="slide"><img src="foto3.jpg" alt="3"></div>
+                        <div class="slide"><img src="foto4.jpg" alt="4"></div>
                     </div>
                 </div>
+            </section>
 
-            </div>
-        </div>
-    </section>
-
-    <section id="comunidad" class="recursos">
-        <div class="container">
-            <h2 class="section-title">Estudiantes</h2>
-            <div class="grid-recursos">
-                <div class="card-foto">
-                    <img src="./foto1.jpg" alt="Promoción 2025 ESJA 13">
-                    <div class="foto-info">Promoción 2025 - ESJA 13</div>
-                </div>
-                <div class="card-foto">
-                    <img src="foto2.jpg" alt="Promoción 2025 ESJA 59">
-                    <div class="foto-info">Promoción 2025 - ESJA 59</div>
-                </div>
-                <div class="card-foto">
-                    <img src="foto3.jpg" alt="Promoción 2024 ESJA 13">
-                    <div class="foto-info">Promoción 2024 - ESJA 13</div>
-                </div>
-                <div class="card-foto">
-                    <img src="foto4.jpg" alt="Promoción 2024 ESJA 59">
-                    <div class="foto-info">Promoción 2024 - ESJA 59</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="faq">
-        <div class="container">
-            <h2 class="section-title">Preguntas Frecuentes</h2>
-            <div class="faq-container">
-                <details>
-                    <summary>¿Cómo entrego los trabajos? <i class="fas fa-chevron-down"></i></summary>
-                    <div class="faq-content"><p>Puedes entregarlos en el aula o vía mail en formato PDF.</p></div>
-                </details>
-                <details>
-                    <summary>¿Dónde veo las fechas de examen? <i class="fas fa-chevron-down"></i></summary>
-                    <div class="faq-content"><p>Están detalladas dentro del Programa de cada escuela.</p></div>
-                </details>
-				<details>
-                    <summary>¿Qué voy a Evaluar? <i class="fas fa-chevron-down"></i></summary>
-                    <div class="faq-content"><p>Principalmente: Asistencia. Conocimientos sobre la materia. Manejo de vocabulario específico. </p></div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <div class="contact-group">
-        <a href="https://dwallingre@gmail.com" class="btn-float gmail" target="_blank" title="Escribime un correo">
-            <i class="fas fa-envelope"></i>
-        </a>
-        <a href="https://wa.me/5493445574590" class="btn-float whatsapp" target="_blank" rel="noopener" title="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+            <footer style="text-align:center; padding: 20px; opacity: 0.6;">
+                &copy; 2026 Basavilbaso, Entre Ríos.
+            </footer>
+        </main>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>© 2026 | Prof. Daniel Wallingre | ESJA Nº13 y Nº59</p>
-        </div>
-    </footer>
-
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,508 +1,136 @@
-/* =========================================
-   1. RESET Y VARIABLES
-   ========================================= */
-:root {
-    --primary: #2c3e50;    /* Azul oscuro profesional */
-    --accent: #3498db;     /* Azul claro para resaltar */
-    --success: #25d366;    /* Verde WhatsApp */
-    --danger: #db4437;     /* Rojo Gmail */
-    --bg-light: #f8f9fa;   /* Fondo gris muy claro */
-    --text-dark: #333;
-    --transition: all 0.3s ease;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Fundamental para evitar desbordes */
-}
-
-html {
-    scroll-behavior: smooth;
+﻿:root {
+    --bordo-intenso: #641e16;
+    --bordo-claro: #922b21;
+    --bordo-gradiente: linear-gradient(135deg, #7b241c 0%, #641e16 100%);
+    --blanco: #ffffff;
+    --gris-suave: #f8f9fa;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: var(--text-dark);
-    background-color: #fff;
-    overflow-x: hidden; /* Corta cualquier cosa que intente salirse de la pantalla */
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--gris-suave);
+    margin: 0;
+    color: #333;
 }
 
+/* Header Institucional */
+.header-esja {
+    background: var(--bordo-gradiente);
+    color: var(--blanco);
+    padding: 60px 20px;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); /* Efecto de corte elegante */
+}
+
+.logo-escuela {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn-back:hover { background: rgba(255,255,255,0.15); }
+
+/* Grid de Tarjetas */
 .container {
     max-width: 1100px;
-    margin: 0 auto;
+    margin: -40px auto 60px; /* Sube las tarjetas sobre el header */
     padding: 0 20px;
 }
 
-/* =========================================
-   2. NAVEGACIÓN
-   ========================================= */
-header {
-    background: #fff;
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.psi-symbol {
-    font-size: 2rem;
-    color: var(--accent);
-    font-weight: 800;
-}
-
-.logo-text strong {
-    display: block;
-    font-size: 1.1rem;
-    color: var(--primary);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.nav-links a:hover {
-    color: var(--accent);
-}
-
-/* =========================================
-   3. HERO (INICIO)
-   ========================================= */
-.hero {
-    padding: 50px 0;
-    /* Combinamos el degradado con un patrón de puntos sutil */
-    background:
-        radial-gradient(circle, #d6e0f0 1px, transparent 1px) 0 0 / 20px 20px, /* Puntos */
-        linear-gradient(135deg, #f5f7fa 0%, #d6e0f0 100%); /* Degradado */
-    background-color: #f5f7fa; /* Color de fallback si el degradado no se carga */
-    text-align: center;
-}
-
-.hero-badge {
-    background: var(--accent);
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin: 20px 0;
-    color: var(--primary);
-}
-
-.text-accent { color: var(--accent); }
-
-.hero-subtitle {
-    font-size: 1.2rem;
-    max-width: 280px;
-    margin: 0 auto 30px;
-}
-
-.btn-primary {
-    display: inline-block;
-    background: var(--primary);
-    color: #fff;
-    padding: 12px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: var(--transition);
-}
-
-.btn-primary:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
-}
-
-/* =========================================
-   4. SECCIONES Y GRIDS
-   ========================================= */
-section { padding: 80px 0; }
-
-.section-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 50px;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 4px;
-    background: var(--accent);
-    margin: 10px auto;
-}
-
-.grid-recursos {
+.card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
-/* TARJETAS (CARDS) */
+/* Estilo de Tarjetas */
 .card {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: var(--transition);
-    border: 1px solid #eee;
-}
-
-.card:hover { transform: translateY(-10px); }
-
-.card i {
-    font-size: 2.5rem;
-    color: var(--accent);
-    margin-bottom: 15px;
-}
-
-.btn-outline {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 8px 20px;
-    border: 2px solid var(--accent);
-    color: var(--accent);
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-/* FOTOS DE COMUNIDAD (TIPO MOSAICO) */
-.card-foto {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.card-foto img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
-}
-
-.foto-info {
-    padding: 15px;
-    text-align: center;
-    font-weight: 600;
-    background: #fff;
-}
-
-/* =========================================
-   5. BOTONES FLOTANTES
-   ========================================= */
-.contact-group {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 2000;
-}
-
-.btn-float {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 28px;
-    text-decoration: none;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    transition: var(--transition);
-}
-
-.gmail { background-color: var(--danger); }
-.whatsapp { background-color: var(--success); }
-
-.btn-float:hover {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* =========================================
-   6. FOOTER Y RESPONSIVE
-   ========================================= */
-footer {
-    background: var(--primary);
-    color: #fff;
-    padding: 40px 0;
-    text-align: center;
-}
-
-@media (max-width: 280px) {
-    .nav-links { display: none; } /* Oculta menú en móvil para simplificar */
-    .hero h1 { font-size: 2rem; }
-    .grid-recursos { grid-template-columns: 1fr; }
-}
-/* AJUSTE SECCIÓN PROPUESTA */
-.bio-flex {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    flex-wrap: wrap; /* Para que en el celular se ponga uno abajo del otro */
-}
-
-.bio-img-wrapper {
-    flex: 1;
-    min-width: 250px;
-    max-width: 350px; /* Tamaño máximo de la foto */
-}
-
-.bio-img-wrapper img {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border: 5px solid white;
-}
-
-.bio-text {
-    flex: 2;
-    min-width: 300px;
-}
-/* ANIMACIÓN PREGUNTAS FRECUENTES */
-details {
-    background: #fff;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #eee;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-details[open] {
-    border-color: var(--accent);
-}
-
-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    list-style: none; /* Quita la flechita por defecto del navegador */
-}
-
-summary::-webkit-details-marker {
-    display: none; /* Quita la flechita en Safari/Chrome */
-}
-
-summary i {
-    transition: transform 0.3s ease;
-    color: var(--accent);
-}
-
-details[open] summary i {
-    transform: rotate(180deg); /* La flecha gira al abrir */
-}
-
-.faq-content {
-    padding-top: 15px;
-    color: #666;
-    border-top: 1px solid #eee;
-    margin-top: 10px;
-}
-/* Esto asegura que las fotos no deformen la página */
-.card-foto {
-    background: #eee; /* Un color gris de fondo mientras carga */
-    min-height: 250px;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-foto img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover; /* Recorta la imagen para que encaje perfecto */
-    display: block;
-}
-/* Tamaño controlado para tu foto de perfil */
-.bio-img-wrapper img {
-    max-width: 300px; /* Tamaño ideal para una foto de perfil */
-    height: auto;
+    background: var(--blanco);
     border-radius: 15px;
-}
-
-/* Animación de las flechas en Dudas */
-summary {
-    list-style: none; /* Quita el triángulo feo por defecto */
-    display: flex;
-    justify-content: space-between;
-}
-
-details[open] summary i {
-    transform: rotate(180deg); /* La flecha gira al abrir */
-    transition: 0.3s;
-}
-/* Esto obliga a que el contenedor tenga tamaño aunque no haya foto */
-.card-foto {
-    background: #f0f0f0;
-    border-radius: 12px;
     overflow: hidden;
-    min-height: 300px; /* Evita que la tarjeta se colapse */
-    border: 1px solid #ddd;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid var(--bordo-intenso);
 }
 
-.card-foto img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover; /* Recorta la foto para que no se estire */
-    display: block;
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(100, 30, 22, 0.15);
 }
 
-/* Arreglo para tu foto de perfil que quedó grande */
-.bio-img-wrapper img {
-    width: 250px; /* Tamaño mucho más equilibrado */
-    height: 250px;
-    border-radius: 50%; /* Opcional: la hace circular */
-    object-fit: cover;
-    margin: 0 auto;
-}
-/* 1. Ajuste de tu foto de perfil (Sección Sobre Mi) */
-.bio-img-wrapper img {
-    width: 280px; /* Tamaño fijo para que no sea gigante */
-    height: 280px;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.card-header {
+    background-color: var(--gris-suave);
+    padding: 30px;
+    text-align: center;
+    font-size: 3rem;
+    color: var(--bordo-claro);
 }
 
-/* 2. Ajuste de la Galería de Estudiantes */
-.card-foto {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
+.card-body {
+    padding: 30px;
+    text-align: center;
 }
 
-.card-foto img {
-    width: 100%;
-    height: 250px; /* Altura uniforme para todas las fotos */
-    object-fit: cover; /* Evita que las fotos de los alumnos se estiren */
-    display: block;
+.card-body h3 {
+    margin-top: 0;
+    color: var(--bordo-intenso);
+    font-size: 1.4rem;
 }
 
-/* 3. Reparar flechas de FAQ */
-details summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    list-style: none;
+.card-body p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 25px;
 }
 
-details[open] summary i {
-    transform: rotate(180deg);
-    transition: 0.3s;
-}
-/* Esto controla que ninguna imagen desborde su contenedor */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Control para la galería de estudiantes */
-.card-foto img {
-    width: 100%;
-    height: 200px; /* Altura uniforme para todas las fotos de grupo */
-    object-fit: cover;
-    border-bottom: 2px solid #eee;
-}
-/* Forzar visibilidad de imágenes */
-.card-foto {
-    display: block !important;
-    min-height: 250px;
-    background-color: #f0f0f0; /* Si la foto no carga, verás un recuadro gris */
-    border: 1px solid #ccc;
-}
-
-.card-foto img {
-    display: block !important;
-    width: 100% !important;
-    height: 250px !important;
-    object-fit: cover !important;
-}
-.card h5 {
-    margin-top: 15px;
+/* Botones de Acción */
+.btn-action {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--bordo-intenso);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
     font-size: 0.9rem;
-    color: var(--primary);
+    transition: 0.3s;
 }
 
-.card .btn-outline {
-    padding: 5px 15px;
+.btn-action:hover {
+    background-color: var(--bordo-claro);
+    box-shadow: 0 4px 12px rgba(146, 43, 33, 0.3);
+}
+
+.footer-simple {
+    text-align: center;
+    padding: 40px;
     font-size: 0.8rem;
+    color: #999;
 }
-/* Ajustes para dispositivos móviles (Celulares) */
-@media (max-width: 480px) {
-    header {
-        padding: 10px 0;
-    }
 
-    nav {
-        flex-direction: column; /* Apila el logo sobre el menú */
-        gap: 10px;
-    }
-
-    .logo {
-        flex-direction: row; /* Mantiene el símbolo al lado del texto */
-        justify-content: center;
-        text-align: center;
-    }
-
-    .psi-symbol {
-        font-size: 1.5rem; /* Símbolo un poco más pequeño en móvil */
-    }
-
-    .logo-text strong {
-        font-size: 0.9rem; /* Texto principal más chico */
-    }
-
-    .logo-text span {
-        font-size: 0.7rem; /* Nombre del prof más chico */
-    }
-
-    .nav-links {
-        gap: 10px;
-        flex-wrap: wrap; /* Si no caben, los botones del menú bajan a otra línea */
-        justify-content: center;
-    }
-
-    .nav-links a {
-        font-size: 0.8rem;
-    }
+/* Móvil */
+@media (max-width: 600px) {
+    .header-esja { padding: 40px 10px; }
+    .header-content h1 { font-size: 1.8rem; }
 }
