@@ -1,0 +1,125 @@
+﻿:root {
+    --verde-bosque: #1e8449;
+    --verde-esmeralda: #2ecc71;
+    --verde-gradiente: linear-gradient(135deg, #27ae60 0%, #145a32 100%);
+    --blanco: #ffffff;
+    --gris-suave: #f1f8f4; /* Fondo con un toque verdoso muy leve */
+    --shadow: 0 10px 30px rgba(30, 132, 73, 0.1);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--gris-suave);
+    margin: 0;
+    color: #333;
+}
+
+/* Header con estética de naturaleza */
+.header-esja {
+    background: var(--verde-gradiente);
+    color: var(--blanco);
+    padding: 60px 20px;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+}
+
+.temp-logo {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.header-content h2 {
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn-back:hover { background: rgba(255,255,255,0.15); }
+
+/* Grid y Tarjetas */
+.container {
+    max-width: 1100px;
+    margin: -30px auto 60px;
+    padding: 0 20px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--blanco);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    border-top: 5px solid var(--verde-esmeralda);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card-header {
+    background-color: #f9fdfb;
+    padding: 35px;
+    text-align: center;
+    font-size: 3.5rem;
+    color: var(--verde-bosque);
+}
+
+.card-body {
+    padding: 30px;
+    text-align: center;
+}
+
+.card-body h3 {
+    margin: 0 0 15px 0;
+    color: var(--verde-bosque);
+}
+
+.btn-action {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--verde-bosque);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-action:hover {
+    background-color: var(--verde-esmeralda);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+.footer-simple {
+    text-align: center;
+    padding: 40px;
+    font-size: 0.8rem;
+    color: #777;
+}
