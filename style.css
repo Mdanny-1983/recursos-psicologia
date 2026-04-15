@@ -1,136 +1,96 @@
 ﻿:root {
-    --bordo-intenso: #641e16;
-    --bordo-claro: #922b21;
-    --bordo-gradiente: linear-gradient(135deg, #7b241c 0%, #641e16 100%);
+    --azul-oscuro: #154360;
+    --azul-medio: #21618c;
+    --celeste: #aed6f1;
+    --gris-fondo: #e9f0f5;
     --blanco: #ffffff;
-    --gris-suave: #f8f9fa;
-    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    --texto-principal: #333333;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--gris-suave);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+    color: var(--texto-principal);
     margin: 0;
-    color: #333;
+    background-color: var(--gris-fondo);
 }
 
-/* Header Institucional */
-.header-esja {
-    background: var(--bordo-gradiente);
-    color: var(--blanco);
-    padding: 60px 20px;
-    text-align: center;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); /* Efecto de corte elegante */
+/* --- ESTRUCTURA --- */
+.site-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    gap: 40px;
 }
 
-.logo-escuela {
-    width: 100px;
-    height: auto;
-    margin-bottom: 15px;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-}
+.main-content { flex: 1; }
 
-.header-content h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-}
-
-.btn-back {
-    display: inline-block;
-    margin-top: 20px;
-    color: white;
-    text-decoration: none;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 8px 16px;
-    border-radius: 50px;
-    transition: 0.3s;
-}
-
-.btn-back:hover { background: rgba(255,255,255,0.15); }
-
-/* Grid de Tarjetas */
-.container {
-    max-width: 1100px;
-    margin: -40px auto 60px; /* Sube las tarjetas sobre el header */
-    padding: 0 20px;
-}
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-/* Estilo de Tarjetas */
-.card {
+section {
     background: var(--blanco);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-bottom: 4px solid var(--bordo-intenso);
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(100, 30, 22, 0.15);
-}
-
-.card-header {
-    background-color: var(--gris-suave);
-    padding: 30px;
-    text-align: center;
-    font-size: 3rem;
-    color: var(--bordo-claro);
-}
-
-.card-body {
-    padding: 30px;
-    text-align: center;
-}
-
-.card-body h3 {
-    margin-top: 0;
-    color: var(--bordo-intenso);
-    font-size: 1.4rem;
-}
-
-.card-body p {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 25px;
-}
-
-/* Botones de Acción */
-.btn-action {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: var(--bordo-intenso);
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: 0.3s;
-}
-
-.btn-action:hover {
-    background-color: var(--bordo-claro);
-    box-shadow: 0 4px 12px rgba(146, 43, 33, 0.3);
-}
-
-.footer-simple {
-    text-align: center;
     padding: 40px;
-    font-size: 0.8rem;
-    color: #999;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* Móvil */
-@media (max-width: 600px) {
-    .header-esja { padding: 40px 10px; }
-    .header-content h1 { font-size: 1.8rem; }
+/* --- LÓGICA FAQ (Aquí estaba el error) --- */
+.faq-item {
+    border-bottom: 1px solid #eee;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    text-align: left;
+    font-size: 1.1rem;
+    color: var(--azul-oscuro);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    max-height: 0; /* Oculto */
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    color: #546e7a;
+}
+
+.faq-answer p { padding-bottom: 20px; margin: 0; }
+
+/* ESTADO ACTIVO */
+.faq-item.active .faq-answer {
+    max-height: 300px; /* Se expande */
+}
+
+.faq-item.active .fa-chevron-down {
+    transform: rotate(180deg);
+    transition: transform 0.3s;
+}
+
+/* --- SLIDER --- */
+.slider-wrapper {
+    overflow: hidden;
+    border-radius: 15px;
+    height: 400px;
+}
+.slides {
+    display: flex;
+    width: 400%;
+    animation: slideShow 20s infinite;
+}
+.slide { width: 25%; }
+.slide img { width: 100%; height: 400px; object-fit: cover; }
+
+@keyframes slideShow {
+    0%, 20% { transform: translateX(0); }
+    25%, 45% { transform: translateX(-25%); }
+    50%, 70% { transform: translateX(-50%); }
+    75%, 95% { transform: translateX(-75%); }
+    100% { transform: translateX(0); }
 }
