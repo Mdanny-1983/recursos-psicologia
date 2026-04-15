@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Situación Vocacional | Prof. Daniel Wallingre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --azul-oscuro: #154360; --azul-medio: #21618c; --fondo: #f4f7f9; }
+        body { font-family: 'Roboto', sans-serif; background: var(--fondo); margin: 0; padding: 0; color: #333; }
+        
+        .container { max-width: 850px; margin: 40px auto; padding: 0 20px; }
+        .form-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        
+        h1 { color: var(--azul-oscuro); font-family: 'Merriweather', serif; text-align: center; margin-bottom: 10px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+        
+        h2 { background: var(--azul-oscuro); color: white; padding: 10px 15px; border-radius: 8px; font-size: 1.1rem; margin-top: 35px; }
+        
+        /* Estilos de tabla para autopercepción */
+        .percepcion-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95rem; }
+        .percepcion-table th { background: #eef2f7; padding: 12px; text-align: left; border: 1px solid #dee2e6; }
+        .percepcion-table td { padding: 12px; border: 1px solid #dee2e6; }
+        .percepcion-table tr:nth-child(even) { background: #fdfdfd; }
+        .radio-cell { text-align: center; width: 60px; }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #455a64; }
+        input[type="text"], input[type="number"], select {
+            width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 8px; box-sizing: border-box;
+        }
+
+        .opciones-check { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; }
+        .check-item { background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; display: flex; align-items: center; }
+        .check-item input { margin-right: 10px; }
+
+        .btn-submit { 
+            width: 100%; padding: 18px; background: var(--azul-medio); color: white; border: none; 
+            border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 40px;
+            transition: 0.3s; box-shadow: 0 10px 20px rgba(33,97,140,0.2);
+        }
+        .btn-submit:hover { background: var(--azul-oscuro); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-card">
+        <h1>¿Qué tanto conozco y me conozco?</h1>
+        <p class="subtitle">Análisis integral de situación vocacional (Basado en Anexos 1.1 y 1.2)</p>
+
+        <form id="fullVocacionalForm">
+            
+            <h2>I. Percepción de mi situación actual</h2>
+            <p style="font-size: 0.9rem; color: #666;">Marca con sinceridad según tu nivel de acuerdo (A: Mucho, B: Regular, C: Poco, D: Nada):</p>
+            
+            <div style="overflow-x: auto;">
+                <table class="percepcion-table">
+                    <thead>
+                        <tr>
+                            <th>Ítem</th>
+                            <th class="radio-cell">A</th>
+                            <th class="radio-cell">B</th>
+                            <th class="radio-cell">C</th>
+                            <th class="radio-cell">D</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Tengo información sobre cómo trabaja un profesional en la carrera que me gusta.</td>
+                            <td class="radio-cell"><input type="radio" name="p1" value="A"></td>
+                            <td class="radio-cell"><input type="radio" name="p1" value="B"></td>
+                            <td class="radio-cell"><input type="radio" name="p1" value="C"></td>
+                            <td class="radio-cell"><input type="radio" name="p1" value="D"></td>
+                        </tr>
+                        <tr>
+                            <td>2. Conozco las instituciones donde estudiar lo que me interesa.</td>
+                            <td class="radio-cell"><input type="radio" name="p2" value="A"></td>
+                            <td class="radio-cell"><input type="radio" name="p2" value="B"></td>
+                            <td class="radio-cell"><input type="radio" name="p2" value="C"></td>
+                            <td class="radio-cell"><input type="radio" name="p2" value="D"></td>
+                        </tr>
+                        <tr>
+                            <td>3. Mi elección está influenciada por los consejos de mi grupo de amigos/as.</td>
+                            <td class="radio-cell"><input type="radio" name="p3" value="A"></td>
+                            <td class="radio-cell"><input type="radio" name="p3" value="B"></td>
+                            <td class="radio-cell"><input type="radio" name="p3" value="C"></td>
+                            <td class="radio-cell"><input type="radio" name="p3" value="D"></td>
+                        </tr>
+                        <tr>
+                            <td>4. Mi familia o parientes han contribuido mucho a mi decisión.</td>
+                            <td class="radio-cell"><input type="radio" name="p4" value="A"></td>
+                            <td class="radio-cell"><input type="radio" name="p4" value="B"></td>
+                            <td class="radio-cell"><input type="radio" name="p4" value="C"></td>
+                            <td class="radio-cell"><input type="radio" name="p4" value="D"></td>
+                        </tr>
+                        <tr>
+                            <td>5. Me siento seguro/a de lo que voy a estudiar o emprender.</td>
+                            <td class="radio-cell"><input type="radio" name="p5" value="A"></td>
+                            <td class="radio-cell"><input type="radio" name="p5" value="B"></td>
+                            <td class="radio-cell"><input type="radio" name="p5" value="C"></td>
+                            <td class="radio-cell"><input type="radio" name="p5" value="D"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>II. Conocimiento del Medio Laboral</h2>
+            
+            <div class="input-group">
+                <label>¿Cuántas carreras universitarias o técnicas podés nombrar ahora mismo?</label>
+                <input type="number" placeholder="Ej: 5">
+            </div>
+
+            <label>Indicá las tres carreras que considerás con mayor demanda laboral hoy:</label>
+            <input type="text" placeholder="1er lugar" style="margin-bottom: 8px;">
+            <input type="text" placeholder="2do lugar" style="margin-bottom: 8px;">
+            <input type="text" placeholder="3er lugar">
+
+            <h2>III. Intereses y Trayectoria Histórica</h2>
+            
+            <label>¿Qué profesiones u ocupaciones te interesaron en estas etapas?</label>
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px; margin-bottom: 15px;">
+                <div style="background:#eee; padding:10px; border-radius:8px; text-align:center;">6 - 10 años</div>
+                <input type="text" placeholder="¿Qué querías ser?">
+                
+                <div style="background:#eee; padding:10px; border-radius:8px; text-align:center;">11 - 13 años</div>
+                <input type="text" placeholder="¿Qué te atraía?">
+
+                <div style="background:#eee; padding:10px; border-radius:8px; text-align:center;">17 años o más</div>
+                <input type="text" placeholder="Interés actual">
+            </div>
+
+            <label>¿Qué factores influyen en tu interés hacia esa profesión? (Podés marcar varios)</label>
+            <div class="opciones-check">
+                <label class="check-item"><input type="checkbox"> Prestigio social</label>
+                <label class="check-item"><input type="checkbox"> Salario esperado</label>
+                <label class="check-item"><input type="checkbox"> Vocación de servicio</label>
+                <label class="check-item"><input type="checkbox"> Tradición familiar</label>
+                <label class="check-item"><input type="checkbox"> Salida laboral rápida</label>
+            </div>
+
+            <button type="submit" class="btn-submit">Finalizar Paso 2: Reconocer</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("fullVocacionalForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        alert("Diagnóstico completado. Esta información es la base para tu proyecto de vida.");
+    });
+</script>
+
+</body>
+</html>

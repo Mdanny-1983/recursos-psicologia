@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientación Vocacional | Prof. Daniel Wallingre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS REVISADO Y OPTIMIZADO */
+        body { font-family:'Roboto', sans-serif; background:linear-gradient(135deg,#f0f4f8 0%,#d5e9f5 100%); margin:0; min-height:100vh; color: #333; }
+        .header-ov { background:#154360; color:white; padding:80px 20px; text-align:center; box-shadow:inset 0 -10px 20px rgba(0,0,0,0.1); }
+        .container { max-width:900px; margin:-60px auto 60px; padding:0 20px; }
+        .card-ov { background:white; padding:40px; border-radius:24px; box-shadow:0 20px 40px rgba(0,0,0,0.1); }
+        .icon-box { font-size:3rem; color:#21618c; margin-bottom:20px; text-align:center; }
+        h2 { font-family:'Merriweather', serif; color:#154360; margin-top:40px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        
+        ul { list-style:none; padding:0; }
+        li { margin-bottom:15px; padding:15px; border-radius:12px; background: #f8fafc; transition: 0.3s; border: 1px solid transparent; }
+        li:hover { border-color: #21618c; background: #fff; transform: translateX(5px); }
+        li i { margin-right:15px; color:#21618c; width:25px; text-align:center; }
+        
+        .btn-test { display:inline-block; background:linear-gradient(135deg,#21618c 0%,#154360 100%); color:white; padding:18px 40px; border-radius:50px; text-decoration:none; font-weight:bold; margin-top:20px; box-shadow:0 10px 20px rgba(33,97,140,0.3); transition: 0.3s; }
+        .btn-test:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(33,97,140,0.4); color: white; }
+        
+        .vocacion-adultos { margin-top:50px; padding:30px; background:#fdfefe; border-radius:20px; border:1px solid #e0e6ed; }
+        .intro-adultos { text-align:center; background:#f4f7f9; padding:20px; border-radius:15px; }
+        .pregunta-clave-box { background:#fff9c4; padding:15px; border-radius:12px; font-style:italic; color:#154360; margin:15px 0; border-left:5px solid #fbc02d; font-weight: bold; }
+        
+        .grid-caracteristicas { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:20px; }
+        .card-caracteristica { background:white; padding:20px; border-radius:15px; border:1px solid #f0f4f8; box-shadow:0 4px 6px rgba(0,0,0,0.05); }
+        
+        /* Ajustes para la tabla */
+        .table-wrapper { overflow-x: auto; margin-top: 20px; border-radius: 10px; }
+        table { width:100%; border-collapse:collapse; min-width: 500px; }
+        td, th { padding:15px; text-align:left; border-bottom: 1px solid #eee; }
+        th { background: #154360; color: white; }
+        
+        .pasos-vocacion { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin:40px 0; }
+        .paso { text-align:center; padding:25px; background:#f0f4f8; border-radius:18px; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .paso:hover { background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .num-circulo { background:#21618c; color:white; width:35px; height:35px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; margin-bottom:15px; font-weight: bold; }
+        
+        .back-link { display:inline-block; margin-top:40px; color:#546e7a; text-decoration:none; font-weight:600; transition: 0.2s; }
+        .back-link:hover { color: #154360; }
+    </style>
+</head>
+<body>
+
+<header class="header-ov">
+    <h1 style="font-family:'Merriweather';margin:0;font-size:2.5rem;">Orientación Vocacional</h1>
+    <p style="opacity:0.9;font-size:1.1rem;margin-top:10px;">Construyendo tu proyecto de vida con realismo y visión</p>
+</header>
+
+<main class="container">
+    <div class="card-ov">
+        <div class="icon-box"><i class="fas fa-map-signs"></i></div>
+        <h2>¿Estás pensando en tu futuro?</h2>
+        <p style="color:#455a64;font-size:1.1rem;line-height:1.7;">
+            La elección de una carrera o un oficio es un proceso de autoconocimiento. Como tu profesor, he seleccionado estas herramientas para ayudarte a explorar tus intereses y aptitudes.
+        </p>
+
+        <h3>Recursos Destacados</h3>
+        <ul>
+            <li>
+                <i class="fas fa-file-pdf"></i>
+                <strong>Guía de Autoconocimiento:</strong>
+                <a href="guia-autoconocimiento.pdf" target="_blank" download style="color:#21618c; font-weight:bold;">Descargar guía</a>
+            </li>
+            <li>
+                <i class="fas fa-clipboard-check"></i>
+                <strong>Test de Intereses:</strong>
+                <a href="test.html" style="color:#21618c; font-weight:bold;">Realizar test propio</a>
+            </li>
+        </ul>
+
+        <center>
+            <a href="test.html" class="btn-test">Realizar Test de Intereses</a>
+        </center>
+
+        <section class="vocacion-adultos">
+            <h2>La elección vocacional en adultos</h2>
+            <div class="intro-adultos">
+                <p>En la educación de adultos, la elección aparece en un momento diferente, donde la experiencia previa es el punto de partida.</p>
+                <div class="pregunta-clave-box">“¿Qué quiero cambiar, mejorar o construir en esta etapa de mi vida?”</div>
+            </div>
+            <div class="grid-caracteristicas">
+                <div class="card-caracteristica">
+                    <h4><span class="num-circulo">1</span> La experiencia pesa</h4>
+                    <p>Tus aprendizajes previos son la base de tus nuevas decisiones.</p>
+                </div>
+                <div class="card-caracteristica">
+                    <h4><span class="num-circulo">2</span> Responsabilidades</h4>
+                    <p>El trabajo y la familia influyen directamente en la organización del tiempo.</p>
+                </div>
+                <div class="card-caracteristica">
+                    <h4><span class="num-circulo">3</span> Deseo de cambio</h4>
+                    <p>Para mejorar condiciones laborales o desarrollar intereses postergados.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparador-carreras">
+            <h2>Oferta de Carreras</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Carrera</th>
+                            <th>Duración</th>
+                            <th>Salida laboral</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Enfermería</td><td>3 años</td><td>Muy alta</td></tr>
+                        <tr style="background:#f5f7fa;"><td>Tecnicatura en Programación</td><td>2–3 años</td><td>Muy alta</td></tr>
+                        <tr><td>Administración de Empresas</td><td>3 años</td><td>Media</td></tr>
+                        <tr style="background:#f5f7fa;"><td>Seguridad e Higiene</td><td>3 años</td><td>Baja</td></tr>
+                        <tr><td>Técnicatura en Producción Avícola</td><td>3 años</td><td>Alta</td></tr>
+                        <tr style="background:#f5f7fa;"><td>Profesorado en Educación Primaria</td><td>4 años</td><td>Media</td></tr>
+                        <tr><td>Profesorado en Educación Inicial</td><td>4 años</td><td>Baja</td></tr>
+                        <tr style="background:#f5f7fa;"><td>Profesorado en Educación Tecnológica</td><td>4 años</td><td>Alta</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <h2>Pasos para tu decisión</h2>
+        <div class="pasos-vocacion">
+            <div class="paso">
+                <span class="num-circulo">1</span>
+                <h3>Explorar</h3>
+                <p>Usa el <a href="cuestionario-de-entrada.html">Cuestionario de entrada</a>para iniciar el proceso.</p>
+            </div>
+            <div class="paso">
+                <span class="num-circulo">2</span>
+                <h3>Reconocer</h3>
+                <p>Identifica tus habilidades con la Guía de Autoconocimiento.</p>
+				<p>Usa el <a href="test.html">Test basado en el CHASIDE</a> para identificar áreas.</p>
+            </div>
+            <div class="paso">
+                <span class="num-circulo">3</span>
+                <h3>Investigar</h3>
+                <p>Busca información sobre carreras y la oferta regional.</p>
+            </div>
+            <div class="paso">
+                <span class="num-circulo">4</span>
+                <h3>Decidir</h3>
+                <p>Elige un camino posible, sabiendo que puede revisarse.</p>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al panel principal</a>
+    </div>
+</main>
+</body>
+</html>

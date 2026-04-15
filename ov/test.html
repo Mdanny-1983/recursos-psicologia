@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Intereses Vocacionales | Prof. Daniel Wallingre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --azul: #154360; --celeste: #21618c; --fondo: #f0f4f8; }
+        body { font-family: 'Roboto', sans-serif; background: var(--fondo); margin: 0; padding: 20px; color: #333; }
+        
+        .container { max-width: 850px; margin: auto; background: white; padding: 40px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { font-family: 'Merriweather', serif; color: var(--azul); margin-bottom: 10px; }
+        .subtitle { color: #666; font-size: 1.1rem; }
+
+        .instrucciones { background: #eef7fd; border-left: 5px solid var(--celeste); padding: 20px; border-radius: 12px; margin-bottom: 30px; line-height: 1.6; }
+
+        /* Estilos del Test */
+        .fila-test { display: flex; align-items: center; justify-content: space-between; padding: 15px; border-bottom: 1px solid #f0f0f0; transition: 0.2s; }
+        .fila-test:hover { background: #f8fbff; }
+        .pregunta-texto { flex-grow: 1; padding-right: 20px; font-size: 1rem; }
+        
+        .btn-check { cursor: pointer; display: flex; align-items: center; gap: 10px; font-weight: bold; color: var(--celeste); white-space: nowrap; }
+        .btn-check input { transform: scale(1.4); cursor: pointer; }
+
+        /* Botón Calcular */
+        .btn-calcular { width: 100%; background: linear-gradient(135deg, var(--celeste) 0%, var(--azul) 100%); color: white; border: none; padding: 20px; font-size: 1.2rem; font-weight: bold; border-radius: 50px; cursor: pointer; margin-top: 40px; transition: 0.3s; box-shadow: 0 10px 20px rgba(33,97,140,0.3); }
+        .btn-calcular:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(33,97,140,0.4); }
+
+        /* Sección de Resultados */
+        #resultado-seccion { display: none; margin-top: 30px; padding: 30px; background: var(--azul); color: white; border-radius: 20px; text-align: center; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .area-titulo { font-family: 'Merriweather', serif; font-size: 2.2rem; margin: 15px 0; color: #fff; }
+        .area-desc { font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px; line-height: 1.6; }
+
+        /* Oferta Regional */
+        .oferta-box { background: rgba(255,255,255,0.15); padding: 20px; border-radius: 15px; text-align: left; margin-top: 25px; border: 1px solid rgba(255,255,255,0.2); }
+        .oferta-box h4 { margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px; }
+        .lista-carreras { column-count: 1; padding-left: 20px; margin: 0; }
+        @media (min-width: 600px) { .lista-carreras { column-count: 2; } }
+        .lista-carreras li { margin-bottom: 8px; font-size: 0.95rem; }
+
+        .btn-reiniciar { background: transparent; border: 1px solid white; color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; margin-top: 25px; transition: 0.3s; }
+        .btn-reiniciar:hover { background: white; color: var(--azul); }
+
+        .back-link { display: block; text-align: center; margin-top: 30px; color: #546e7a; text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Test de Intereses Profesionales</h1>
+        <p class="subtitle">Prof. Daniel Wallingre | Orientación Vocacional</p>
+    </header>
+    
+    <div id="test-content">
+        <div class="instrucciones">
+            <i class="fas fa-info-circle"></i> <strong>¿Cómo completar?</strong><br>
+            Leé cada actividad con calma. Marcá la casilla <strong>"Me interesa"</strong> solo en aquellas tareas que te resulten atractivas o que te gustaría aprender a hacer. No te preocupes por la dificultad, solo por tu interés personal.
+        </div>
+
+        <form id="form-vocacional">
+            <div id="preguntas-grid">
+                </div>
+            <button type="button" class="btn-calcular" onclick="procesarTest()">
+                <i class="fas fa-chart-pie"></i> Ver mi Perfil y Opciones Regionales
+            </button>
+        </form>
+    </div>
+
+    <div id="resultado-seccion">
+        <h3>Tu área de mayor interés es:</h3>
+        <div class="area-titulo" id="ganador-nombre"></div>
+        <p class="area-desc" id="ganador-desc"></p>
+
+        <div class="oferta-box">
+            <h4><i class="fas fa-map-marker-alt"></i> Opciones de estudio en Entre Ríos:</h4>
+            <ul id="lista-er" class="lista-carreras"></ul>
+        </div>
+
+        <button class="btn-reiniciar" onclick="location.reload()">Realizar el test de nuevo</button>
+    </div>
+
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al Panel</a>
+</div>
+
+<script>
+    const listadoPreguntas = [
+        "Acompañar a personas en su recuperación física", "Aconsejar personas sobre planes de ahorro",
+        "Analizar y estudiar grupos étnicos", "Aplicar conocimientos en investigaciones diversas",
+        "Asistir a productores agropecuarios", "Asesorar en el tratamiento de residuos",
+        "Asesorar y participar en producciones artísticas", "Atender la salud de las personas",
+        "Crear campañas publicitarias", "Crear estrategias de comercialización",
+        "Criar, cuidar y tratar animales", "Dar clases en cualquiera de los niveles",
+        "Decorar ambientes que requieran estética", "Diagnosticar y orientar personas (Psicología)",
+        "Diseñar programas de computación", "Diseñar dispositivos para recuperar movimientos",
+        "Diseñar juegos interactivos", "Diseñar máquinas para actividades humanas",
+        "Diseñar y planificar la producción de muebles", "Elaborar campañas para productos nuevos",
+        "Estudiar idiomas extranjeros", "Evaluar y gestionar convenios internacionales",
+        "Formar parte de espacios de producción cultural", "Gestionar y evaluar proyectos de desarrollo",
+        "Formular estrategias de relaciones internacionales", "Interpretar y explicar las leyes",
+        "Investigar sobre áreas verdes y medio ambiente", "Investigar y producir nuevos medicamentos",
+        "Organizar un plan de distribución empresarial", "Organizar y administrar una empresa",
+        "Participar de encuestas y campañas políticas", "Participar en el diseño de grandes obras",
+        "Pintar, hacer esculturas o ilustrar", "Planificar procesos productivos industriales",
+        "Producir cortometrajes o videos", "Promover programas de seguridad y salud",
+        "Realizar el control de calidad de alimentos", "Recibir, organizar y procesar documentos",
+        "Redactar artículos periodísticos", "Mantenimiento a sistemas eléctricos",
+        "Seleccionar y evaluar personal", "Ser parte de un grupo de teatro",
+        "Ser parte de un equipo de marketing", "Trabajar con niños y jóvenes",
+        "Trabajar en tareas de quirófano", "Trabajar en creación de tecnología",
+        "Trabajar en medios de comunicación", "Trabajar en laboratorios químicos",
+        "Trabajar para disminuir riesgos de accidentes", "Trabajar para la inclusión de personas"
+    ];
+
+    const mapaAreas = {
+        "Arte y Creatividad": { 
+            ids: [7, 9, 13, 23, 33, 35, 42, 47],
+            desc: "Tu perfil destaca en la expresión estética, la creatividad visual y la comunicación cultural.",
+            oferta: ["Prof. de Artes Visuales (UADER)", "Diseño Gráfico", "Gestión Cultural (FCEDU-UNER)", "Artes Plásticas"]
+        },
+        "Ciencias Sociales": { 
+            ids: [3, 12, 21, 22, 24, 26, 31, 39, 44, 50],
+            desc: "Tenés una fuerte inclinación hacia el trabajo con personas, la educación, el derecho y el análisis social.",
+            oferta: ["Psicología (UADER)", "Prof. Educación Primaria", "Trabajo Social (UNER)", "Derecho (UNLZ/UNER)", "Prof. de Historia"]
+        },
+        "Económico-Administrativo": { 
+            ids: [2, 10, 20, 25, 29, 30, 38, 41, 43],
+            desc: "Te interesa la gestión de recursos, el liderazgo de equipos, las finanzas y el mundo de los negocios.",
+            oferta: ["Contador Público (UNER)", "Administración (UNER/UADER)", "Tec. en Gestión Pública", "Comercio Exterior"]
+        },
+        "Ciencia y Tecnología": { 
+            ids: [4, 15, 17, 18, 19, 32, 34, 40, 46, 49],
+            desc: "Tu perfil es analítico y técnico, orientado a la informática, la construcción, la electrónica o la mecánica.",
+            oferta: ["Tec. en Programación (UTN)", "Análisis de Sistemas", "Ingeniería Civil (UTN)", "Prof. en Educación Tecnológica"]
+        },
+        "Ciencias de la Salud": { 
+            ids: [1, 8, 11, 14, 16, 27, 28, 36, 37, 45, 48],
+            desc: "Tu interés se centra en el cuidado físico, la medicina, la investigación biológica y la prevención de enfermedades.",
+            oferta: ["Enfermería (UADER)", "Tec. Avícola (UADER)", "Bioingeniería (UNER)", "Medicina", "Kinesiología"]
+        }
+    };
+
+    // Generar preguntas
+    const grid = document.getElementById('preguntas-grid');
+    listadoPreguntas.forEach((texto, i) => {
+        grid.innerHTML += `
+            <div class="fila-test">
+                <span class="pregunta-texto">${i + 1}. ${texto}</span>
+                <label class="btn-check">
+                    <input type="checkbox" class="chk-voc" data-num="${i + 1}"> Me interesa
+                </label>
+            </div>
+        `;
+    });
+
+    function procesarTest() {
+        const seleccionados = Array.from(document.querySelectorAll('.chk-voc:checked')).map(el => parseInt(el.dataset.num));
+        
+        if(seleccionados.length === 0) {
+            alert("Por favor, seleccioná al menos algunas actividades que te interesen.");
+            return;
+        }
+
+        let maxPuntos = -1;
+        let areaGanadora = "";
+
+        for (const [nombre, datos] of Object.entries(mapaAreas)) {
+            const puntos = datos.ids.filter(id => seleccionados.includes(id)).length;
+            if (puntos > maxPuntos) {
+                maxPuntos = puntos;
+                areaGanadora = nombre;
+            }
+        }
+
+        // Mostrar resultados
+        document.getElementById('test-content').style.display = 'none';
+        const seccionRes = document.getElementById('resultado-seccion');
+        seccionRes.style.display = 'block';
+        
+        document.getElementById('ganador-nombre').innerText = areaGanadora;
+        document.getElementById('ganador-desc').innerText = mapaAreas[areaGanadora].desc;
+
+        const listaER = document.getElementById('lista-er');
+        listaER.innerHTML = "";
+        mapaAreas[areaGanadora].oferta.forEach(carrera => {
+            listaER.innerHTML += `<li>${carrera}</li>`;
+        });
+    }
+</script>
+
+</body>
+</html>
