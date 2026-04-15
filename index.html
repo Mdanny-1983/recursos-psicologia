@@ -10,29 +10,22 @@
     
     <style>
         :root {
-            --azul-oscuro: #154360;
-            --azul-medio: #21618c;
-            --celeste: #aed6f1;
-            --gris-fondo: #e9f0f5;
+            --azul-oscuro: #1b4f72;
+            --azul-medio: #2e86c1;
+            --celeste-claro: #d6eaf8;
+            --acento: #f39c12;
             --blanco: #ffffff;
-            --texto-principal: #333333;
+            --gris-suave: #f8fafc;
+            --texto: #2c3e50;
+            --shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
 
         body {
             font-family: 'Roboto', sans-serif;
-            line-height: 1.8;
-            color: var(--texto-principal);
+            background-color: #f0f4f8;
+            color: var(--texto);
             margin: 0;
-            background-color: var(--gris-fondo);
-        }
-
-        h1, h2 { font-family: 'Merriweather', serif; color: var(--azul-oscuro); }
-
-        .waves-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
-            z-index: -1;
+            line-height: 1.6;
         }
 
         .site-container {
@@ -43,38 +36,49 @@
             gap: 40px;
         }
 
-        .sidebar { flex: 0 0 280px; position: sticky; top: 40px; height: fit-content; }
+        /* --- SIDEBAR --- */
+        .sidebar { flex: 0 0 260px; position: sticky; top: 40px; height: fit-content; }
         .nav-menu { list-style: none; padding: 0; }
         .btn-side {
-            display: flex; align-items: center; padding: 16px 24px; margin-bottom: 12px;
-            background: var(--blanco); color: var(--azul-medio); text-decoration: none;
-            border-radius: 12px; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center; padding: 20px;
+            margin-bottom: 15px; background: var(--blanco); color: var(--azul-oscuro);
+            text-decoration: none; border-radius: 16px; font-weight: 700;
+            box-shadow: var(--shadow); transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05);
         }
-        .btn-side:hover { transform: translateX(10px); background: var(--azul-medio); color: white; }
+        .btn-side i { font-size: 1.8rem; margin-bottom: 10px; color: var(--azul-medio); }
+        .btn-side:hover { transform: translateY(-5px); background: var(--azul-oscuro); color: white; }
+        .btn-side:hover i { color: var(--celeste-claro); }
 
+        /* --- MAIN CONTENT --- */
         .main-content { flex: 1; }
+        .hero-card {
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+            color: white; padding: 60px 40px; border-radius: 24px; text-align: center;
+            margin-bottom: 40px; box-shadow: 0 15px 35px rgba(21, 67, 96, 0.3);
+        }
+        .hero-card h1 { font-size: 3rem; margin: 0; color: white; font-family: 'Merriweather', serif; }
+
         .card-section {
-            background: var(--blanco); padding: 40px; border-radius: 20px;
-            margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: var(--blanco); padding: 40px; border-radius: 24px;
+            margin-bottom: 30px; box-shadow: var(--shadow);
         }
 
-        .perfil-foto img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--celeste); object-fit: cover; }
+        h2 { font-family: 'Merriweather', serif; color: var(--azul-oscuro); border-left: 5px solid var(--acento); padding-left: 15px; }
 
-        /* --- LÓGICA FAQ --- */
+        .perfil-foto img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
+
+        /* --- FAQ --- */
         .faq-item { border-bottom: 1px solid #eee; }
         .faq-question {
             width: 100%; background: none; border: none; padding: 20px 0;
             text-align: left; font-size: 1.1rem; color: var(--azul-oscuro);
             font-weight: 600; cursor: pointer; display: flex; justify-content: space-between;
         }
-        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease-in-out; color: #546e7a; }
-        .faq-answer p { padding-bottom: 20px; margin: 0; }
-        .faq-item.active .faq-answer { max-height: 300px; }
-        .faq-item.active .fa-chevron-down { transform: rotate(180deg); transition: 0.3s; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease-out; }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
 
         /* --- SLIDER --- */
-        .slider-wrapper { overflow: hidden; border-radius: 20px; height: 400px; margin: 20px 0; }
+        .slider-wrapper { overflow: hidden; border-radius: 20px; height: 400px; margin-top: 20px; }
         .slides { display: flex; width: 400%; animation: slideShow 20s infinite; }
         .slide { width: 25%; }
         .slide img { width: 100%; height: 400px; object-fit: cover; }
@@ -87,61 +91,80 @@
             100% { transform: translateX(0); }
         }
 
-        @media (max-width: 900px) { .site-container { flex-direction: column; } .sidebar { position: relative; width: 100%; } }
+        .btn-main {
+            display: inline-block; padding: 12px 25px; background: var(--acento);
+            color: white; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .site-container { flex-direction: column; }
+            .sidebar { position: relative; top: 0; width: 100%; }
+            .hero-card h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="waves-bg"></div>
-
     <div class="site-container">
         <aside class="sidebar">
             <nav>
-    <ul class="nav-menu">
-        <li><a href="programa%20ESJA13.pdf" class="btn-side"><i class="fas fa-university"></i> ESJA 13</a></li>
-        
-        <li><a href="esja59.html" class="btn-side"><i class="fas fa-microscope"></i> ESJA 59</a></li>
-        
-        <li><a href="orientacion.html" class="btn-side"><i class="fas fa-compass"></i> Orientación</a></li>
-    </ul>
-</nav>
+                <ul class="nav-menu">
+                    <li><a href="esja13/esja13.html" class="btn-side"><i class="fas fa-university"></i><span>ESJA 13</span></a></li>
+                    <li><a href="esja59/esja59.html" class="btn-side"><i class="fas fa-microscope"></i><span>ESJA 59</span></a></li>
+                    <li><a href="ov/orientacion.html" class="btn-side"><i class="fas fa-compass"></i><span>Orientación Vocacional</span></a></li>
+                </ul>
+            </nav>
         </aside>
 
         <main class="main-content">
-            <header style="text-align:center; margin-bottom: 40px;">
+            <header class="hero-card">
                 <h1>Psiconectados</h1>
                 <p>Recursos Pedagógicos • Prof. Daniel Wallingre</p>
+                <a href="#faq" class="btn-main">Preguntas Frecuentes</a>
             </header>
 
             <section id="sobre-mi" class="card-section">
-                <div style="display:flex; gap:30px; align-items:center; flex-wrap:wrap;">
-                    <div class="perfil-foto"><img src="mi foto.jpg" alt="Daniel"></div>
-                    <div style="flex:1;">
+                <div style="display:flex; gap:40px; align-items:center; flex-wrap:wrap;">
+                    <div class="perfil-foto">
+                        <img src="mi foto.jpg" alt="Daniel" style="box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
+                    </div>
+                    <div style="flex:1; min-width: 300px;">
                         <h2>Sobre mí</h2>
-                        <p>Profesor de Psicología con 16 años de trayectoria en educación, especialmente en secundaria de jóvenes y Adultos. También me desempeño como tutor, Orientador Vocacional desde la perspectiva educativa y Asesor Pedagógico. Mi enfoque parte de reconocer que cada estudiante adulto tiene una trayectoria de vida, experiencias y una búsqueda personal propia y su propio ritmo de aprendizaje. Por eso, el aprendizaje no se basa en contenidos teóricos, sino tambien en el diálogo, la reflexión y el intercambio de experiencias.La psicología se trabaja como una herramienta para comprendernos mejor a nosotros mismos, entender a los demas y pensar nuestas decisiones, respetando los ditintos recorridos que cada estudiante aporta al aula. </p>
+                        <p style="font-style: italic; color: var(--azul-medio);">"La psicología es una herramienta para comprendernos mejor y pensar nuestras decisiones."</p>
+                        <p>Con 16 años de trayectoria en la educación de <strong>Jóvenes y Adultos</strong>, mi enfoque prioriza el diálogo y el intercambio de experiencias.</p>
                     </div>
                 </div>
             </section>
 
             <section id="faq" class="card-section">
-                <h2>Preguntas Frecuentes</h2>
-                
+                <h2><i class="fas fa-question-circle" style="color:var(--acento)"></i> Preguntas Frecuentes</h2>
                 <div class="faq-item">
                     <button class="faq-question">¿Cómo se aprueba el espacio? <i class="fas fa-chevron-down"></i></button>
                     <div class="faq-answer">
-                        <p>La evaluación es formativa, contemplando conocimiento, responsabilidad y compromiso.</p>
+                        <p>La evaluación es <strong>formativa</strong>. Se tiene en cuenta el conocimiento, la responsabilidad y el compromiso sostenido.</p>
                     </div>
                 </div>
-
-                <div class="faq-item">
+				<div class="faq-item">
                     <button class="faq-question">¿Cómo se entregan los trabajos? <i class="fas fa-chevron-down"></i></button>
                     <div class="faq-answer">
                         <p>Deben enviarse por correo a: <strong>dwallingre@gmail.com</strong></p>
                     </div>
                 </div>
+				<div class="faq-item">
+                    <button class="faq-question">¿Dónde encuentro el material de estudio y los temas? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Depende del colegio a: <strong>En la sección ESJA13 o ESJA59</strong></p>
+                    </div>
+                </div>
+				<div class="faq-item">
+                    <button class="faq-question">¿Y si tengo una Trayectoria Discontínua, dónde encuentro el material de estudio, los trabajos y los temas? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Aunque depende del colegio a: <strong>En la sección Trayectorias Discontinuas de la ESJA13 o de la ESJA59 respectivamente.</strong></p>
+                    </div>
+                </div>
             </section>
 
             <section id="comunidad" class="card-section">
-                <h2>Comunidad</h2>
+                <h2>Nuestra Comunidad</h2>
                 <div class="slider-wrapper">
                     <div class="slides">
                         <div class="slide"><img src="foto1.jpg" alt="1"></div>
@@ -152,8 +175,8 @@
                 </div>
             </section>
 
-            <footer style="text-align:center; padding: 20px; opacity: 0.6;">
-                &copy; 2026 Basavilbaso, Entre Ríos.
+            <footer style="text-align:center; padding: 40px 0; opacity: 0.7;">
+                &copy; 2026 • Daniel Wallingre - Basavilbaso, Entre Ríos.
             </footer>
         </main>
     </div>
